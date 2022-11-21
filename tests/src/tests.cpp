@@ -8,19 +8,34 @@ extern "C"
 #include "fib.h"
 }
 
-
+struct test_struct
+{
+    int input;
+    int output;
+};
 // See Catch2's documentation: https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md#scaling-up
 
 TEST_CASE("sumtail")
 {
-    // Add the tests for excercise 3 "sumtail" function here. Use "REQUIRE()" statement to check. 
-    REQUIRE(1==0);
+    /* testing base case, a normal number, and a big number */
+    test_struct test_array[] = {{1, 1}, {10, 55}, {200, 20100}};
+
+    for (auto &[input, output] : test_array)
+    {
+        REQUIRE(sumtail(input,0) == output);
+    }
+    
 }
 
 TEST_CASE("sumwhile")
 {
-    // Add the tests for excercise 3 "sumwhile" function here. Use "REQUIRE()" statement to check. 
-    REQUIRE(1==0);
+    /* testing three known values */
+    test_struct test_array[] = {{1, 1}, {10, 55}, {200, 20100}};
+
+    for (auto &[input, output] : test_array)
+    {
+        REQUIRE(sumwhile(input) == output);
+    }
 }
 
 TEST_CASE("sumn")
@@ -32,8 +47,14 @@ TEST_CASE("sumn")
 
 TEST_CASE("fib")
 {
-   // Add the tests for excercise 4 "fib" function here. Use "REQUIRE()" statement to check. 
-    REQUIRE(1==0);
+    /* testing base case, a normal number, and a big number */
+   test_struct test_array[] = {{1, 1}, {10, 55}, {30, 832040}};
+
+    for (auto &[input, output] : test_array)
+    {
+        REQUIRE(fib(input,0,1) == output);
+    }
+    
 }
 
 
